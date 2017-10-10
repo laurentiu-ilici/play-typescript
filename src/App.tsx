@@ -1,17 +1,24 @@
 import * as React from 'react';
+import { Router, Route, browserHistory } from 'react-router';
+import { Provider } from 'react-redux';
+import { createStore, combineReducers } from 'redux';
+import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
+
 import './App.css';
-import { createStore } from 'redux';
 import { enthusiasm } from './reducers/index';
 import { StoreState } from './types/index';
 import HelloContainer from './containers/HelloContainer';
-import { Provider } from 'react-redux';
 
 const logo = require('./logo.svg');
 
-const store = createStore<StoreState>(enthusiasm, {
-  enthusiasmLevel: 1,
-  languageName: 'JavaScript',
+const reducers = combineReducers<StoreState>({
+  enthusiasm,
+  routing: routerReducer
 });
+
+const store = createStore(reducers);
+
+const history = syncHistoryWithStore(browserHistory, store);
 
 class App extends React.Component {
   render() {
@@ -25,7 +32,9 @@ class App extends React.Component {
           To get started, edit <code>src/App.tsx</code> and load to reload.
         </p>
         <Provider store={store}>
-          <HelloContainer/>
+          <Router history={history} >
+            <Route path="/" component={HelloContainer}/>
+          </Router>
         </Provider>
       </div>
     );
