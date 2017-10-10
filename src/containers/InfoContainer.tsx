@@ -1,4 +1,4 @@
-import Hello from '../components/Hello';
+import Overview from '../components/pages/info/Info';
 import * as actions from '../actions/';
 import { StoreState } from '../types/index';
 import { connect, Dispatch } from 'react-redux';
@@ -17,4 +17,4 @@ export function mapDispatchToProps(dispatch: Dispatch<actions.EnthusiasmAction>)
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Hello);
+export default connect(mapStateToProps, mapDispatchToProps)(Overview);

@@ -7,9 +7,9 @@ import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
 import './App.css';
 import { enthusiasm } from './reducers/index';
 import { StoreState } from './types/index';
-import HelloContainer from './containers/HelloContainer';
-
-const logo = require('./logo.svg');
+import OverviewContainer from './containers/OverviewContainer';
+import InfoContainer from './containers/InfoContainer';
+import Header from './components/header/Header';
 
 const reducers = combineReducers<StoreState>({
   enthusiasm,
@@ -24,16 +24,14 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
+        <Header/>
         <p className="App-intro">
           To get started, edit <code>src/App.tsx</code> and load to reload.
         </p>
         <Provider store={store}>
           <Router history={history} >
-            <Route path="/" component={HelloContainer}/>
+            <Route path="/" component={OverviewContainer}/>
+            <Route path="/info" component={InfoContainer}/>
           </Router>
         </Provider>
       </div>

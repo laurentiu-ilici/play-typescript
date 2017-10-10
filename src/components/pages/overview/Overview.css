@@ -1,11 +1,11 @@
-.hello {
+.overview {
   text-align: center;
   margin: 20px;
   font-size: 48px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.hello button {
+.overview button {
   margin-left: 25px;
   margin-right: 25px;
   font-size: 40px;
@@ -13,5 +13,5 @@
 }
 
 .greeting {
-    color: red;
+    color: blue;
 }

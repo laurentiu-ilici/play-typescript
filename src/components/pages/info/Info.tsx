@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './Hello.css';
+import './Info.css';
 
 export interface Props {
   name: string;
@@ -8,15 +8,15 @@ export interface Props {
   onDecrement?: () => void;
 }
 
-const Hello = ({name, enthusiasmLevel = 1, onIncrement, onDecrement}: Props) => {
+const InfoPage = ({name, enthusiasmLevel = 1, onIncrement, onDecrement}: Props) => {
   if (enthusiasmLevel <= 0) {
     throw new Error('You could be a bit more happy');
   }
 
   return (
-    <div className="hello">
+    <div className="info">
       <div className="greeting">
-        Hello {name + getExclamationMarks(enthusiasmLevel)}
+        Cristi {name + Array(enthusiasmLevel + 1).join('!')}
       </div>
       <div>
         <button onClick={onDecrement}>-</button>
@@ -26,8 +26,4 @@ const Hello = ({name, enthusiasmLevel = 1, onIncrement, onDecrement}: Props) => 
   );
 };
 
-export default Hello;
-
-function getExclamationMarks(numChars: number) {
-  return Array(numChars + 1).join('!');
-}
+export default InfoPage;
