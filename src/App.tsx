@@ -24,14 +24,15 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Header/>
         <p className="App-intro">
           To get started, edit <code>src/App.tsx</code> and load to reload.
         </p>
         <Provider store={store}>
           <Router history={history} >
-            <Route path="/" component={OverviewContainer}/>
-            <Route path="/info" component={InfoContainer}/>
+            <Route path="/" component={Header}>
+              <Route path="/info" component={InfoContainer}/>
+              <Route path="/overview" component={OverviewContainer}/>
+            </Route>
           </Router>
         </Provider>
       </div>
